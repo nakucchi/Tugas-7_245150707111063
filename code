@@ -1,0 +1,64 @@
+// Abstract class Kue
+abstract class Kue {
+    protected String nama;
+    protected double harga;
+
+    public Kue(String nama, double harga) {
+        this.nama = nama;
+        this.harga = harga;
+    }
+
+    public abstract double hitungHarga();
+
+    public String toString() {
+        return "Nama: " + nama + ", Harga Satuan: " + harga;
+    }
+}
+
+// Subclass KuePesanan
+class KuePesanan extends Kue {
+    private double berat;
+
+    public KuePesanan(String nama, double harga, double berat) {
+        super(nama, harga);
+        this.berat = berat;
+    }
+
+    public double getBerat() {
+        return berat;
+    }
+
+    @Override
+    public double hitungHarga() {
+        return harga * berat;
+    }
+
+    @Override
+    public String toString() {
+        return "KuePesanan - " + super.toString() + ", Berat: " + berat + ", Harga Total: " + hitungHarga();
+    }
+}
+
+// Subclass KueJadi
+class KueJadi extends Kue {
+    private double jumlah;
+
+    public KueJadi(String nama, double harga, double jumlah) {
+        super(nama, harga);
+        this.jumlah = jumlah;
+    }
+
+    public double getJumlah() {
+        return jumlah;
+    }
+
+    @Override
+    public double hitungHarga() {
+        return harga * jumlah * 2;
+    }
+
+    @Override
+    public String toString() {
+        return "KueJadi - " + super.toString() + ", Jumlah: " + jumlah + ", Harga Total: " + hitungHarga();
+    }
+}
